@@ -12,12 +12,19 @@ def current_time():
 
 
 def get_latest_video(youtube, playlist_id):
+    # get first 50 videos and sort by published datetime.
+    # the google format for datetime is: 2019-12-14T20:59:57.000Z
     request = youtube.playlistItems().list(
         part="snippet",
         playlistId=playlist_id,
-        maxResults=1
+        maxResults=50
     )
-    return request.execute()
+    response = request.execute()
+    list_videos = response['items']
+    list_videos_sorted = sorted(list_videos, key=lambda video: datetime.strptime(video['snippet']['publishedAt'],
+                                                                                 '%Y-%m-%dT%H:%M:%S.%fZ'),
+                                reverse=True)
+    return list_videos_sorted[0]
 
 
 def insert_top_level_comment(youtube, video_id, comment_text):
@@ -60,8 +67,10 @@ def main():
     starting_latest_video = get_latest_video(youtube, mtang_work_test_uploads)
 
     # starting video
-    starting_video_id = starting_latest_video['items'][0]['snippet']['resourceId']['videoId']
-    latest_video_id = starting_latest_video['items'][0]['snippet']['resourceId']['videoId']
+    starting_video_id = starting_latest_video['snippet']['resourceId']['videoId']
+    latest_video_id = starting_latest_video['snippet']['resourceId']['videoId']
+    latest_video_title = starting_latest_video['snippet']['title']
+    print(current_time(), latest_video_id, latest_video_title)
 
     while (latest_video_id == starting_video_id):
         # how long to wait for. default = 1 second
@@ -69,9 +78,10 @@ def main():
         time.sleep(1)
 
         response = get_latest_video(youtube, mtang_work_test_uploads)
-        latest_video_id = response['items'][0]['snippet']['resourceId']['videoId']
+        latest_video_id = response['snippet']['resourceId']['videoId']
+        latest_video_title = response['snippet']['title']
 
-        print(current_time(), latest_video_id)
+        print(current_time(), latest_video_id, latest_video_title)
 
     # as soon as the latest video is not equal to the starting video (aka, new upload)
     # insert a new top-level comment into the new video
