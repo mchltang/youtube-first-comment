@@ -28,17 +28,18 @@ def main():
 
     api_service_name = "youtube"
     api_version = "v3"
-    client_secrets_file = "client_secret_22372764053-9deei2ifedbr6fpqk355b3jplp66kute.apps.googleusercontent.com.json"
+    client_secrets_file_mchltang = "client_secret_22372764053-9deei2ifedbr6fpqk355b3jplp66kute.apps.googleusercontent.com.json"
+    client_secrets_file_michaeltang1817 = "client_secret_96743203108-qtb5c7ik9ur3f4qiccqsh3v5kksmov4k.apps.googleusercontent.com.json"
 
     scopes = ['https://www.googleapis.com/auth/youtube.force-ssl']
 
     # Get credentials and create an API client
-    flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(client_secrets_file, scopes)
+    flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(client_secrets_file_michaeltang1817, scopes)
     credentials = flow.run_console()
     youtube = googleapiclient.discovery.build(api_service_name, api_version, credentials=credentials)
 
-    comment_text = "Honestly I doubt this comment will be one out of the ten newest comments. But if it is, that would be a miracle"
-    response = insert_top_level_comment(youtube, "-6lRX5lUuBQ", comment_text)
+    comment_text = "Does this comment even show up? Hope you guys see this."
+    response = insert_top_level_comment(youtube, "HjfvTGlcEXI", comment_text)
     print(response)
 
 
