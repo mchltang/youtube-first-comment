@@ -55,24 +55,26 @@ def main():
 
     # Beast's youtube uploads playlist
     beast_uploads = "UUX6OQ3DkcsbYNE6H8uQQuVA"
+    mtang_work_test_uploads = "UUVRGPeJfJPFG7ss33iTFDmQ"
 
-    starting_latest_video = get_latest_video(youtube, beast_uploads)
+    starting_latest_video = get_latest_video(youtube, mtang_work_test_uploads)
 
     # starting video
     starting_video_id = starting_latest_video['items'][0]['snippet']['resourceId']['videoId']
-    starting_video_title = starting_latest_video['items'][0]['snippet']['title']
     latest_video_id = starting_latest_video['items'][0]['snippet']['resourceId']['videoId']
-    latest_video_title = starting_latest_video['items'][0]['snippet']['title']
 
     while (latest_video_id == starting_video_id):
-        print(current_time(), latest_video_id, latest_video_title)
-        time.sleep(0.5)
-        response = get_latest_video(youtube, beast_uploads)
+        # how long to wait for. default = 1 second
+        # TODO: test 0.2 seconds for rate limiting
+        time.sleep(1)
+
+        response = get_latest_video(youtube, mtang_work_test_uploads)
         latest_video_id = response['items'][0]['snippet']['resourceId']['videoId']
+
+        print(current_time(), latest_video_id)
 
     # as soon as the latest video is not equal to the starting video (aka, new upload)
     # insert a new top-level comment into the new video
-    print("New video found! Inserting top level comment...")
     comment_text = "First!"
     response = insert_top_level_comment(youtube, latest_video_id, comment_text)
     print(response)
