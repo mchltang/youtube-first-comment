@@ -11,7 +11,7 @@ def current_time():
     return datetime.now(timezone('EST'))
 
 
-def get_latest_video(youtube, playlist_id):
+def get_latest_video_playlist(youtube, playlist_id):
     # get first 50 videos and sort by published datetime.
     # the google format for datetime is: 2019-12-14T20:59:57.000Z
     request = youtube.playlistItems().list(
@@ -25,6 +25,19 @@ def get_latest_video(youtube, playlist_id):
                                                                                  '%Y-%m-%dT%H:%M:%S.%fZ'),
                                 reverse=True)
     return list_videos_sorted[0]
+
+
+def get_latest_video_search(youtube, channel_id):
+    request = youtube.search().list(
+        part="snippet",
+        channelId=channel_id,
+        maxResults=50,
+        order="date",
+        type="video"
+    )
+    response = request.execute()
+    list_videos = response['items']
+    return list_videos[0]
 
 
 def insert_top_level_comment(youtube, video_id, comment_text):
@@ -61,24 +74,53 @@ def main():
     youtube = googleapiclient.discovery.build(api_service_name, api_version, credentials=credentials)
 
     # Beast's youtube uploads playlist
+    beast_channel = "UCX6OQ3DkcsbYNE6H8uQQuVA"
     beast_uploads = "UUX6OQ3DkcsbYNE6H8uQQuVA"
+    mtang_work_test_channel = "UCVRGPeJfJPFG7ss33iTFDmQ"
     mtang_work_test_uploads = "UUVRGPeJfJPFG7ss33iTFDmQ"
 
-    starting_latest_video = get_latest_video(youtube, mtang_work_test_uploads)
+    ############################### PLAYLIST METHOD ###############################
+    # starting_latest_video = get_latest_video_playlist(youtube, mtang_work_test_uploads)
+    #
+    # # starting video
+    # starting_video_id = starting_latest_video['snippet']['resourceId']['videoId']
+    # latest_video_id = starting_latest_video['snippet']['resourceId']['videoId']
+    # latest_video_title = starting_latest_video['snippet']['title']
+    # print(current_time(), latest_video_id, latest_video_title)
+    #
+    # while (latest_video_id == starting_video_id):
+    #     # how long to wait for. default = 1 second
+    #     # TODO: test 0.2 seconds for rate limiting
+    #     time.sleep(1)
+    #
+    #     response = get_latest_video_playlist(youtube, mtang_work_test_uploads)
+    #     latest_video_id = response['snippet']['resourceId']['videoId']
+    #     latest_video_title = response['snippet']['title']
+    #
+    #     print(current_time(), latest_video_id, latest_video_title)
+    #
+    # # as soon as the latest video is not equal to the starting video (aka, new upload)
+    # # insert a new top-level comment into the new video
+    # comment_text = "First!"
+    # response = insert_top_level_comment(youtube, latest_video_id, comment_text)
+    # print(response)
+
+    ############################### SEARCH METHOD ###############################
+    starting_latest_video = get_latest_video_search(youtube, mtang_work_test_channel)
 
     # starting video
-    starting_video_id = starting_latest_video['snippet']['resourceId']['videoId']
-    latest_video_id = starting_latest_video['snippet']['resourceId']['videoId']
+    starting_video_id = starting_latest_video['id']['videoId']
+    latest_video_id = starting_latest_video['id']['videoId']
     latest_video_title = starting_latest_video['snippet']['title']
     print(current_time(), latest_video_id, latest_video_title)
 
     while (latest_video_id == starting_video_id):
         # how long to wait for. default = 1 second
         # TODO: test 0.2 seconds for rate limiting
-        time.sleep(1)
+        time.sleep(2)
 
-        response = get_latest_video(youtube, mtang_work_test_uploads)
-        latest_video_id = response['snippet']['resourceId']['videoId']
+        response = get_latest_video_search(youtube, mtang_work_test_channel)
+        latest_video_id = response['id']['videoId']
         latest_video_title = response['snippet']['title']
 
         print(current_time(), latest_video_id, latest_video_title)
