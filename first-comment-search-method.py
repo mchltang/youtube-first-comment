@@ -101,35 +101,9 @@ def main():
 
     # as soon as the latest video is not equal to the starting video (aka, new upload)
     # insert a new top-level comment into the new video
-    comment_text = "First!"
+    comment_text = "Honestly I doubt this comment will be one out of the ten newest comments. But if it is, that would be a miracle"
     response = insert_top_level_comment(youtube, latest_video_id, comment_text)
     print(response)
-
-    ############################### SEARCH METHOD ###############################
-    # starting_latest_video = get_latest_video_search(youtube, mtang_work_test_channel)
-    #
-    # # starting video
-    # starting_video_id = starting_latest_video['id']['videoId']
-    # latest_video_id = starting_latest_video['id']['videoId']
-    # latest_video_title = starting_latest_video['snippet']['title']
-    # print(current_time(), latest_video_id, latest_video_title)
-    #
-    # while (latest_video_id == starting_video_id):
-    #     # how long to wait for. default = 1 second
-    #     # TODO: test 0.2 seconds for rate limiting
-    #     time.sleep(2)
-    #
-    #     response = get_latest_video_search(youtube, mtang_work_test_channel)
-    #     latest_video_id = response['id']['videoId']
-    #     latest_video_title = response['snippet']['title']
-    #
-    #     print(current_time(), latest_video_id, latest_video_title)
-    #
-    # # as soon as the latest video is not equal to the starting video (aka, new upload)
-    # # insert a new top-level comment into the new video
-    # comment_text = "First!"
-    # response = insert_top_level_comment(youtube, latest_video_id, comment_text)
-    # print(response)
 
 
 if __name__ == "__main__":

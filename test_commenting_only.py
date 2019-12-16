@@ -37,7 +37,7 @@ def main():
     credentials = flow.run_console()
     youtube = googleapiclient.discovery.build(api_service_name, api_version, credentials=credentials)
 
-    comment_text = "First!"
+    comment_text = "Honestly I doubt this comment will be one out of the ten newest comments. But if it is, that would be a miracle"
     response = insert_top_level_comment(youtube, "-6lRX5lUuBQ", comment_text)
     print(response)
 
