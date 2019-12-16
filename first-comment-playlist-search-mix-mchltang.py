@@ -76,11 +76,11 @@ def main():
     # Beast's youtube uploads playlist
     beast_channel = "UCX6OQ3DkcsbYNE6H8uQQuVA"
     beast_uploads = "UUX6OQ3DkcsbYNE6H8uQQuVA"
-    mtang_work_test_channel = "UCVRGPeJfJPFG7ss33iTFDmQ"
-    mtang_work_test_uploads = "UUVRGPeJfJPFG7ss33iTFDmQ"
+    gensoukyou_test_channel = "UCTWE0vIBTAT3F70PhO2EUCw"
+    gensoukyou_test_uploads = "UUTWE0vIBTAT3F70PhO2EUCw"
 
     ############################### SEARCH METHOD ###############################
-    starting_latest_video = get_latest_video_search(youtube, mtang_work_test_channel)
+    starting_latest_video = get_latest_video_search(youtube, gensoukyou_test_channel)
 
     # starting video
     starting_video_id = starting_latest_video['id']['videoId']
@@ -93,20 +93,21 @@ def main():
         time.sleep(1)
 
         if counter % 2 == 0:
-            response = get_latest_video_search(youtube, mtang_work_test_channel)
+            response = get_latest_video_search(youtube, gensoukyou_test_channel)
             latest_video_id = response['id']['videoId']
             latest_video_title = response['snippet']['title']
+            print("search", current_time(), latest_video_id, latest_video_title)
         else:
-            response = get_latest_video_playlist(youtube, mtang_work_test_uploads)
+            response = get_latest_video_playlist(youtube, gensoukyou_test_uploads)
             latest_video_id = response['snippet']['resourceId']['videoId']
             latest_video_title = response['snippet']['title']
+            print("playlist", current_time(), latest_video_id, latest_video_title)
 
-        print(current_time(), latest_video_id, latest_video_title)
         counter += 1
 
     # as soon as the latest video is not equal to the starting video (aka, new upload)
     # insert a new top-level comment into the new video
-    comment_text = "Honestly I doubt this comment will be one out of the ten newest comments. But if it is, that would be a miracle"
+    comment_text = "Hey Catherine, did I beat you on newest comment?"
     response = insert_top_level_comment(youtube, latest_video_id, comment_text)
     print(response)
 

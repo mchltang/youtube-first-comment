@@ -107,7 +107,7 @@ def main():
 
     # as soon as the latest video is not equal to the starting video (aka, new upload)
     # insert a new top-level comment into the new video
-    comment_text = "Honestly I doubt this comment will be one out of the ten newest comments. But if it is, that would be a miracle"
+    comment_text = "Hey Catherine, did I beat you on newest comment?"
     response = insert_top_level_comment(youtube, latest_video_id, comment_text)
     print(response)
 

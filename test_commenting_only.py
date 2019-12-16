@@ -34,7 +34,8 @@ def main():
     scopes = ['https://www.googleapis.com/auth/youtube.force-ssl']
 
     # Get credentials and create an API client
-    flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(client_secrets_file_michaeltang1817, scopes)
+    flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(client_secrets_file_michaeltang1817,
+                                                                               scopes)
     credentials = flow.run_console()
     youtube = googleapiclient.discovery.build(api_service_name, api_version, credentials=credentials)
 
