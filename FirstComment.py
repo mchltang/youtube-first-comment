@@ -152,9 +152,9 @@ def main():
         link_type = channel_link.split("youtube.com/")[1].split("/")[0]
         link_data = list(channel_link.split("youtube.com/")[1].split("/")[1])
         if link_type == "channel":
-            channel_id = "".join(link_data)
+            channel_id = "".join(link_data).strip()
             link_data[1] = 'U'
-            uploads_id = "".join(link_data)
+            uploads_id = "".join(link_data).strip()
         elif link_type == "user":
             channel_id = get_channel_id_from_username(youtube, "".join(link_data).strip())
             uploads_id_list = list(channel_id)
@@ -165,7 +165,7 @@ def main():
 
     # [L] to perform a single refresh, [A] to automatically perform refreshes from now on
     input_rate = input(
-        "Enter [L] to perform a single refresh on this channel's videos, or press [A] to start scanning for new video: ")
+        "Press:\n[ENTER] to perform a single refresh on this channel's videos,\n[A] to start scanning for new video.\nYour choice: ")
     while input_rate != 'a' and input_rate != 'A':
         response_search = get_latest_video_search(youtube, channel_id)
         latest_video_id_search = response_search['id']['videoId']
@@ -182,29 +182,65 @@ def main():
             latest_video_id_playlist) + " " + latest_video_title_playlist)
 
         input_rate = input_rate = input(
-            "\nEnter [L] to perform a single refresh on this channel's videos, or press [A] to start scanning for new video: ")
+            "\nPress:\n[ENTER] to perform a single refresh on this channel's videos,\n[A] to start scanning for new video.\nYour choice: ")
 
-    # if user presses [A], ask for enter confirmation
-    comment_text = input(
-        '\nPlease enter your comment text (Do not enter a comment like "First", make it longer and more descriptive so it isn\'t flagged as spam):\n')
+    # if user presses [A], ask for comment
+    while True:
+        comment_text = input(
+            '\nPlease enter your comment text (Do not enter a comment like "First", make it longer and more descriptive so it isn\'t flagged as spam):\n')
+        comment_confirm = input('\nYour comment will be: "' + comment_text + '".\nIs this okay?\n[Y]es [N]o: ')
+        if comment_confirm == 'y' or comment_confirm == 'Y':
+            break
 
-    print('\nYour comment will be: "' + comment_text + '"')
+    while True:
+        autostart = input(
+            "\nEnter:\n[A] to automatically start at 3:59:50 PM EST,\n[T] to specify a time at which to start scanning,\n[M] to manually choose when to start scanning\nYour choice: ")
+        if autostart == 'm' or autostart == 'M' or autostart == 'a' or autostart == 'A' or autostart == 't' or autostart == 'T':
+            break
 
-    autostart = input(
-        "\nEnter [A] to automatically start at 3:59:50 PM EST, or press [M] to manually choose when to start scanning: ")
     if autostart == 'm' or autostart == 'M':
         input(
             "\nPress [ENTER] to begin scanning (if you are doing this for Mr. Beast's challenge, press [ENTER] at 3:59:50 PM): ")
         print("\n")
+
         post_comment_on_new_video(youtube, channel_id, uploads_id, comment_text)
+
     elif autostart == 'a' or autostart == 'A':
         beast_timestamp = 1576789190
+
         print("\nThe current time is " + str(current_time()) + ", " + str(
             (int(beast_timestamp) - int(current_timestamp()))) + " seconds left until scanning starts...")
+
         while (current_timestamp() < beast_timestamp):
             time.sleep(1)
             print("The current time is " + str(current_time()) + ", " + str(
                 (int(beast_timestamp) - int(current_timestamp()))) + " seconds left until scanning starts...")
+
+        post_comment_on_new_video(youtube, channel_id, uploads_id, comment_text)
+
+    elif autostart == 't' or autostart == 'T':
+        while True:
+            year = input("Year (YYYY): ")
+            month = input("Month (MM): ")
+            day = input("Day (DD): ")
+            hours = input("Hours (on a 24 hour scale, so 00 - 24) (HH): ")
+            minutes = input("Minutes (MM): ")
+            seconds = input("Seconds (SS): ")
+            date_string = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds
+            target_timestamp = datetime.strptime(date_string, "%Y-%m-%d %H:%M:%S").timestamp()
+            time_confirmation = input(
+                "The program will begin scanning at: " + date_string + ", is this okay?\n[Y]es [N]o: ")
+            if time_confirmation == 'y' or time_confirmation == 'Y':
+                break
+
+        print("\nThe current time is " + str(current_time()) + ", " + str(
+            (int(target_timestamp) - int(current_timestamp()))) + " seconds left until scanning starts...")
+
+        while (current_timestamp() < target_timestamp):
+            time.sleep(1)
+            print("The current time is " + str(current_time()) + ", " + str(
+                (int(target_timestamp) - int(current_timestamp()))) + " seconds left until scanning starts...")
+
         post_comment_on_new_video(youtube, channel_id, uploads_id, comment_text)
 
 
