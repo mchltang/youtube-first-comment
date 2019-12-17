@@ -136,7 +136,8 @@ def main():
 
     chosen_file_index = input("\nPlease enter the number corresponding to the client secret file you want to use: ")
     client_secret_file = ints_to_filenames[int(chosen_file_index)]
-    print("\nOn the page that pops up in your browser, please select the SAME GOOGLE ACCOUNT associated with the client secret file " + client_secret_file + "\n")
+    print(
+        "\nOn the page that pops up in your browser, please select the SAME GOOGLE ACCOUNT associated with the client secret file " + client_secret_file + "\n")
     youtube = create_youtube_object(client_secret_file)
 
     # ask for user to paste the link of the channel in, or use mr. beast's channel
