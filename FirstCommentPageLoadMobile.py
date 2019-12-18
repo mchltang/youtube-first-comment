@@ -58,9 +58,9 @@ def reload_page_and_comment(youtube, comment_text):
         # "https://www.youtube.com/user/MrBeast6000",
         # "https://www.youtube.com/user/MrBeast6000/videos",
         # "https://www.youtube.com/user/MrBeast6000/featured",
-        # "https://www.youtube.com/user/MrBeast6000/videos",
-        # "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA",
         # "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
+        # "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA",
+        # "https://www.youtube.com/user/MrBeast6000/videos",
         # "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/featured",
         # "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
 
@@ -76,9 +76,9 @@ def reload_page_and_comment(youtube, comment_text):
         "https://m.youtube.com/user/MrBeast6000",
         "https://m.youtube.com/user/MrBeast6000/videos",
         "https://m.youtube.com/user/MrBeast6000/featured",
-        "https://m.youtube.com/user/MrBeast6000/videos",
-        "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA",
         "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
+        "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA",
+        "https://m.youtube.com/user/MrBeast6000/videos",
         "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/featured",
         "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
 
