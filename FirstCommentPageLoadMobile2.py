@@ -7,6 +7,7 @@ from datetime import datetime
 from pytz import timezone
 import glob
 import urllib.request
+import random
 
 
 def current_time():
@@ -54,52 +55,45 @@ def create_youtube_object(client_secrets_file):
 
 def reload_page_and_comment(youtube, comment_text):
     urls = [
-        # Mr. Beast youtube links
-        "https://www.youtube.com/user/MrBeast6000",
-        "https://www.youtube.com/user/MrBeast6000/videos",
-        "https://www.youtube.com/user/MrBeast6000/featured",
-        "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
-        "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA",
-        "https://www.youtube.com/user/MrBeast6000/videos",
-        "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/featured",
-        "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
+        # # Mr. Beast youtube links
+        # "https://m.youtube.com/user/MrBeast6000",
+        # "https://m.youtube.com/user/MrBeast6000/videos",
+        # "https://m.youtube.com/user/MrBeast6000/featured",
+        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
+        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA",
+        # "https://m.youtube.com/user/MrBeast6000/videos",
+        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/featured",
+        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
 
-        # # gensoukyou radio channel, for testing
-        # "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw",
-        # "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
-        # "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/featured",
-        # "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
+        # gensoukyou radio channel, for testing
+        "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw",
+        "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
+        "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/featured",
+        "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
     ]
 
-    # Mr. Beast youtube link
-    url_for_first_load = "https://www.youtube.com/user/MrBeast6000/videos"
+    # # Mr. Beast youtube link
+    # url_for_first_load = "https://m.youtube.com/user/MrBeast6000/videos"
 
-    # # gensoukyou radio channel, for testing
-    # url_for_first_load = "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos"
+    # gensoukyou radio channel, for testing
+    url_for_first_load = "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos"
 
     user_agent_strings = [
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36',
+        'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Mobile Safari/537.36',
+        'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.112 Mobile Safari/537.36',
+        'Mozilla/5.0 (Linux; Android 9; OnePlus 7 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.73 Mobile Safari/537.36',
+        'Mozilla/5.0 (Linux; Android 9; OnePlus 7 Pro) AppleWebKit/537.36 (KHTML; like Gecko) Chrome/76.0.3809.132 Mobile Safari/537.36',
+        'Mozilla/5.0 (Linux; Android 10; OnePlus 7 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.186 Mobile Safari/537.36',
+        'Mozilla/5.0 (Linux; Android 9; OnePlus 7 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Mobile Safari/537.36',
+        'Mozilla/5.0 (Linux; Android 9; OnePlus 7 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.111 Mobile Safari/537.36',
+        'Mozilla/5.0 (Linux; Android 9; OnePlus 7 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.92 Mobile Safari/537.36',
+        'Mozilla/5.0 (Linux; Android 9; OnePlus 7 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.89 Mobile Safari/537.36',
+        'Mozilla/5.0 (Linux; Android 9; OnePlus 7 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36',
     ]
 
     # load the page once to get the current latest video
     hdr = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36',
+        'User-Agent': random.choice(user_agent_strings),
         'Cache-Control': 'no-cache, no-store, must-revalidate',
         'Pragma': 'no-cache',
         'Expires': '0'
@@ -117,7 +111,7 @@ def reload_page_and_comment(youtube, comment_text):
     counter = 0
     while current_video_id == latest_video_id:
         hdr = {
-            'User-Agent': user_agent_strings[counter % len(user_agent_strings)],
+            'User-Agent': random.choice(user_agent_strings),
             'Cache-Control': 'no-cache, no-store, must-revalidate',
             'Pragma': 'no-cache',
             'Expires': '0'
@@ -131,6 +125,7 @@ def reload_page_and_comment(youtube, comment_text):
             current_video_id = first_video_id.split('"')[0]
         else:
             uploads = decoded_page_contents.split('Uploads')[1]
+            # uploads = decoded_page_contents.split('Play all')[1]
             first_video_id = uploads.split('"videoId":"')[1]
             current_video_id = first_video_id.split('"')[0]
         print(str(current_time()) + " URL " + str(counter % len(urls)) + " current video ID = " + current_video_id)
