@@ -69,24 +69,6 @@ def reload_page_and_comment(youtube, comment_text):
         # "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
         # "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/featured",
         # "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
-
-        ################################# MOBILE #################################
-
-        # # Mr. Beast youtube links
-        # "https://m.youtube.com/user/MrBeast6000",
-        # "https://m.youtube.com/user/MrBeast6000/videos",
-        # "https://m.youtube.com/user/MrBeast6000/featured",
-        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
-        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA",
-        # "https://m.youtube.com/user/MrBeast6000/videos",
-        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/featured",
-        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
-
-        # # gensoukyou radio channel, for testing
-        # "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw",
-        # "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
-        # "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/featured",
-        # "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
     ]
 
     # Mr. Beast youtube link
@@ -94,14 +76,6 @@ def reload_page_and_comment(youtube, comment_text):
 
     # # gensoukyou radio channel, for testing
     # url_for_first_load = "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos"
-
-    ################################# MOBILE #################################
-
-    # # Mr. Beast youtube link
-    # url_for_first_load = "https://m.youtube.com/user/MrBeast6000/videos"
-
-    # # gensoukyou radio channel, for testing
-    # url_for_first_load = "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos"
 
     user_agent_strings = [
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36',
@@ -121,24 +95,6 @@ def reload_page_and_comment(youtube, comment_text):
         'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36',
         'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
         'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36',
-
-        ################################# MOBILE #################################
-
-        # 'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.116 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 10; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.116 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.92 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.62 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.143 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 10; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.89 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 10; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.96 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.89 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 10; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.62 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3828.0 Mobile Safari/537.36',
-        # 'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3880.5 Mobile Safari/537.36',
     ]
 
     # load the page once to get the current latest video
@@ -148,16 +104,6 @@ def reload_page_and_comment(youtube, comment_text):
         'Pragma': 'no-cache',
         'Expires': '0'
     }
-
-    ################################# MOBILE #################################
-
-    # # load the page once to get the current latest video
-    # hdr = {
-    #     'User-Agent': 'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.101 Mobile Safari/537.36',
-    #     'Cache-Control': 'no-cache, no-store, must-revalidate',
-    #     'Pragma': 'no-cache',
-    #     'Expires': '0'
-    # }
 
     req = urllib.request.Request(url_for_first_load, headers=hdr)
     response = urllib.request.urlopen(req)
@@ -185,7 +131,6 @@ def reload_page_and_comment(youtube, comment_text):
             current_video_id = first_video_id.split('"')[0]
         else:
             uploads = decoded_page_contents.split('Uploads')[1]
-            # uploads = decoded_page_contents.split('Play all')[1]
             first_video_id = uploads.split('"videoId":"')[1]
             current_video_id = first_video_id.split('"')[0]
         print(str(current_time()) + " URL " + str(counter % len(urls)) + " current video ID = " + current_video_id)

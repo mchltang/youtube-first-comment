@@ -54,24 +54,6 @@ def create_youtube_object(client_secrets_file):
 
 def reload_page_and_comment(youtube, comment_text):
     urls = [
-        # # Mr. Beast youtube links
-        # "https://www.youtube.com/user/MrBeast6000",
-        # "https://www.youtube.com/user/MrBeast6000/videos",
-        # "https://www.youtube.com/user/MrBeast6000/featured",
-        # "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
-        # "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA",
-        # "https://www.youtube.com/user/MrBeast6000/videos",
-        # "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/featured",
-        # "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
-
-        # # gensoukyou radio channel, for testing
-        # "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw",
-        # "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
-        # "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/featured",
-        # "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
-
-        ################################# MOBILE #################################
-
         # Mr. Beast youtube links
         "https://m.youtube.com/user/MrBeast6000",
         "https://m.youtube.com/user/MrBeast6000/videos",
@@ -89,14 +71,6 @@ def reload_page_and_comment(youtube, comment_text):
         # "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
     ]
 
-    # # Mr. Beast youtube link
-    # url_for_first_load = "https://www.youtube.com/user/MrBeast6000/videos"
-    #
-    # # # gensoukyou radio channel, for testing
-    # # url_for_first_load = "https://www.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos"
-
-    ################################# MOBILE #################################
-
     # Mr. Beast youtube link
     url_for_first_load = "https://m.youtube.com/user/MrBeast6000/videos"
 
@@ -104,26 +78,6 @@ def reload_page_and_comment(youtube, comment_text):
     # url_for_first_load = "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos"
 
     user_agent_strings = [
-        # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
-        # 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36',
-
-        ################################# MOBILE #################################
-
         'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Mobile Safari/537.36',
         'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.116 Mobile Safari/537.36',
         'Mozilla/5.0 (Linux; Android 10; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.116 Mobile Safari/537.36',
@@ -140,16 +94,6 @@ def reload_page_and_comment(youtube, comment_text):
         'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3828.0 Mobile Safari/537.36',
         'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3880.5 Mobile Safari/537.36',
     ]
-
-    # # load the page once to get the current latest video
-    # hdr = {
-    #     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36',
-    #     'Cache-Control': 'no-cache, no-store, must-revalidate',
-    #     'Pragma': 'no-cache',
-    #     'Expires': '0'
-    # }
-
-    ################################# MOBILE #################################
 
     # load the page once to get the current latest video
     hdr = {
