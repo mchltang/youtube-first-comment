@@ -63,14 +63,16 @@ def insert_top_level_comment(youtube, video_id, comment_text):
 
 
 def post_comment_on_new_video(youtube, channel_id, uploads_id, comment_text):
-    starting_latest_video = get_latest_video_search(youtube, channel_id)
+    # starting time
+    starting_timestamp = current_timestamp()
 
     # starting video
+    starting_latest_video = get_latest_video_search(youtube, channel_id)
     starting_video_id = starting_latest_video['id']['videoId']
     latest_video_id = starting_latest_video['id']['videoId']
 
     counter = 0
-    while (latest_video_id == starting_video_id):
+    while latest_video_id == starting_video_id and current_timestamp() < (starting_timestamp + 120):
         time.sleep(1)
 
         if counter % 2 == 0:
@@ -88,8 +90,11 @@ def post_comment_on_new_video(youtube, channel_id, uploads_id, comment_text):
 
     # as soon as the latest video is not equal to the starting video (aka, new upload)
     # insert a new top-level comment into the new video
-    response = insert_top_level_comment(youtube, latest_video_id, comment_text)
-    print(response)
+    if latest_video_id == starting_video_id:
+        print('Data API script has ran for 2 minutes, stopping to conserve quota!')
+    else:
+        response = insert_top_level_comment(youtube, latest_video_id, comment_text)
+        print(response)
 
 
 def get_channel_id_from_username(youtube, username):
