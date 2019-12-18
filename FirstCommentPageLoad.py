@@ -72,19 +72,21 @@ def reload_page_and_comment(youtube, comment_text):
 
         ################################# MOBILE #################################
 
-        # # Mr. Beast youtube links
-        # "https://m.youtube.com/user/MrBeast6000",
-        # "https://m.youtube.com/user/MrBeast6000/videos",
-        # "https://m.youtube.com/user/MrBeast6000/featured",
-        # "https://m.youtube.com/user/MrBeast6000/videos",
-        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA",
-        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
-        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/featured",
-        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
+        # Mr. Beast youtube links
+        "https://m.youtube.com/user/MrBeast6000",
+        "https://m.youtube.com/user/MrBeast6000/videos",
+        "https://m.youtube.com/user/MrBeast6000/featured",
+        "https://m.youtube.com/user/MrBeast6000/videos",
+        "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA",
+        "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
+        "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/featured",
+        "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
 
-        # gensoukyou radio channel, for testing
-        "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/feed?activity_view=3",
-        "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
+        # # gensoukyou radio channel, for testing
+        # "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw",
+        # "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
+        # "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/featured",
+        # "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
     ]
 
     # # Mr. Beast youtube link
@@ -95,11 +97,11 @@ def reload_page_and_comment(youtube, comment_text):
 
     ################################# MOBILE #################################
 
-    # # Mr. Beast youtube link
-    # url_for_first_load = "https://www.youtube.com/user/MrBeast6000/videos"
+    # Mr. Beast youtube link
+    url_for_first_load = "https://m.youtube.com/user/MrBeast6000/videos"
 
-    # gensoukyou radio channel, for testing
-    url_for_first_load = "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos"
+    # # gensoukyou radio channel, for testing
+    # url_for_first_load = "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos"
 
     user_agent_strings = [
         # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36',
@@ -118,6 +120,7 @@ def reload_page_and_comment(youtube, comment_text):
         # 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36',
         # 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36',
         # 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
+        # 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36',
 
         ################################# MOBILE #################################
 
@@ -177,7 +180,7 @@ def reload_page_and_comment(youtube, comment_text):
         response = urllib.request.urlopen(req)
         page_contents = response.read()
         decoded_page_contents = page_contents.decode()
-        if 'videos' in urls[counter % len(urls)] or 'm.youtube.com' in urls[counter % len(urls)]:
+        if 'videos' in urls[counter % len(urls)]:
             first_video_id = decoded_page_contents.split('"videoId":"')[1]
             current_video_id = first_video_id.split('"')[0]
         else:
@@ -188,7 +191,9 @@ def reload_page_and_comment(youtube, comment_text):
         print(str(current_time()) + " URL " + str(counter % len(urls)) + " current video ID = " + current_video_id)
         counter += 1
 
-    insert_top_level_comment(youtube, current_video_id, comment_text)
+    # TODO: uncomment this when mr beast mobile page loads correctly
+    # insert_top_level_comment(youtube, current_video_id, comment_text)
+    print("Commented!")
 
 
 def main():
