@@ -55,28 +55,28 @@ def create_youtube_object(client_secrets_file):
 
 def reload_page_and_comment(youtube, comment_text):
     urls = [
-        # # Mr. Beast youtube links
-        # "https://m.youtube.com/user/MrBeast6000",
-        # "https://m.youtube.com/user/MrBeast6000/videos",
-        # "https://m.youtube.com/user/MrBeast6000/featured",
-        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
-        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA",
-        # "https://m.youtube.com/user/MrBeast6000/videos",
-        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/featured",
-        # "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
+        # Mr. Beast youtube links
+        "https://m.youtube.com/user/MrBeast6000",
+        "https://m.youtube.com/user/MrBeast6000/videos",
+        "https://m.youtube.com/user/MrBeast6000/featured",
+        "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
+        "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA",
+        "https://m.youtube.com/user/MrBeast6000/videos",
+        "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/featured",
+        "https://m.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA/videos",
 
-        # gensoukyou radio channel, for testing
-        "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw",
-        "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
-        "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/featured",
-        "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
+        # # gensoukyou radio channel, for testing
+        # "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw",
+        # "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
+        # "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/featured",
+        # "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos",
     ]
 
-    # # Mr. Beast youtube link
-    # url_for_first_load = "https://m.youtube.com/user/MrBeast6000/videos"
+    # Mr. Beast youtube link
+    url_for_first_load = "https://m.youtube.com/user/MrBeast6000/videos"
 
-    # gensoukyou radio channel, for testing
-    url_for_first_load = "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos"
+    # # gensoukyou radio channel, for testing
+    # url_for_first_load = "https://m.youtube.com/channel/UCTWE0vIBTAT3F70PhO2EUCw/videos"
 
     user_agent_strings = [
         'Mozilla/5.0 (Linux; Android 9; ONEPLUS 6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Mobile Safari/537.36',
